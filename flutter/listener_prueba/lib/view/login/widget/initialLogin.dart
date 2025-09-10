@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:listener_prueba/pages/home.dart';
 
 class initialLogin extends StatelessWidget {
   const initialLogin({
@@ -68,7 +69,15 @@ class initialLogin extends StatelessWidget {
             Center(
               child: Container(
                 child:
-                  ElevatedButton(onPressed: (){}, 
+                  ElevatedButton(
+                    onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(),
+                          ),
+                        );
+                      }, 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 174, 208, 255),
                       foregroundColor: const Color.fromARGB(255, 77, 151, 255),
