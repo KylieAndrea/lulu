@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/login_bloc.dart';
 
 class failedLogin extends StatelessWidget {
   const failedLogin({
@@ -29,7 +32,9 @@ class failedLogin extends StatelessWidget {
               ),
           ),
           SizedBox(height: 10,),
-          ElevatedButton(onPressed: (){}, 
+          ElevatedButton(onPressed: (){
+            context.read<LoginBloc>().add(RetryEvento());
+          }, 
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 174, 208, 255),
               foregroundColor: const Color.fromARGB(255, 77, 151, 255),

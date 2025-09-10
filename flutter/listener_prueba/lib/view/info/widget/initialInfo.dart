@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class initialInfo extends StatelessWidget {
   const initialInfo({
-    super.key,
+    super.key, required this.nombre, required this.cc,
   });
+
+  final String nombre;
+  final String cc;
 
   @override
   Widget build(BuildContext context) {
@@ -26,33 +29,22 @@ class initialInfo extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Modelo'),
-                Text('Color'),
-                Text('Dueño'),
-                Text('Descripcion')
+                Text('Id :'),
+                Text('Name :'),
+                Text('User name :'),
+                Text('Email :')
               ],
             ),
             SizedBox(width: 40,),
-            Expanded(
-              child: Column(
+            Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Campo vacio'),
-                  Text('Campo vacio'),
-                  Text('Campo vacio',
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      fontWeight: FontWeight.bold,
-                    )
-                  ),
-                  Text(
-                    'Campo vacio',
-                    softWrap: true,
-                    textAlign: TextAlign.justify,
-                  )
+                  Text(''),
+                  Text(''),
+                  Text(''),
+                  Text('')
                 ],
               ),
-            ),
           ],
         ),
       )

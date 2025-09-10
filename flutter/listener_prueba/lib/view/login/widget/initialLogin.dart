@@ -1,12 +1,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:listener_prueba/pages/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:listener_prueba/view/login/bloc/login_bloc.dart';
 
 class initialLogin extends StatelessWidget {
-  const initialLogin({
+  initialLogin({
     super.key,
   });
+
+  final TextEditingController nombrecontroller = TextEditingController();
+  final TextEditingController cccontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +30,8 @@ class initialLogin extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: cccontroller,
+              maxLength: 10,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly,
@@ -52,6 +58,7 @@ class initialLogin extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: nombrecontroller,
               decoration: InputDecoration(
                 labelText: '',
                 enabledBorder: OutlineInputBorder(
@@ -71,13 +78,20 @@ class initialLogin extends StatelessWidget {
                 child:
                   ElevatedButton(
                     onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Home(),
-                          ),
-                        );
-                      }, 
+                      final nombre = nombrecontroller.text.trim();
+                      final cc = cccontroller.text.trim();
+
+                      if (nombre.isEmpty || cc.isEmpty){
+                        context.read<LoginBloc>().add(falloEvento());
+                        return;
+                      }
+                      if (cc.length < 8){
+                        context.read<LoginBloc>().add(falloEvento());
+                        return;
+                      }
+
+                      context.read<LoginBloc>().add(CreateUser(nombre: nombre, cc: cc));
+                      },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 174, 208, 255),
                       foregroundColor: const Color.fromARGB(255, 77, 151, 255),

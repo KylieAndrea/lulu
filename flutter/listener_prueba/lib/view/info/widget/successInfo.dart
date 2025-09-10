@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:listener_prueba/model/info.dart';
 
+// ignore: camel_case_types
 class successInfo extends StatelessWidget {
   const successInfo({
-    super.key,
+    super.key, required this.info,
   });
+
+  final Info info;
 
   @override
   Widget build(BuildContext context) {
@@ -21,38 +25,26 @@ class successInfo extends StatelessWidget {
           fontFamily: 'roboto'
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start, // alinea arriba
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Modelo'),
-                Text('Color'),
-                Text('Dueño'),
-                Text('Descripcion')
+                Text('Id :'),
+                Text('Name :'),
+                Text('User name :'),
+                Text('Email :')
               ],
             ),
             SizedBox(width: 40,),
-            Expanded(
-              child: Column(
+            Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Mazda 2 Hatchback'),
-                  Text('Rojo Soul Red'),
-                  Text('peticion',
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      fontWeight: FontWeight.bold,
-                    )
-                  ),
-                  Text(
-                    'El Mazda 2 Hatchback 2023 combina diseño elegante, eficiencia y tecnología Skyactiv. '
-                    'Su color Rojo Soul Red resalta en cualquier camino, ofreciendo estilo y dinamismo.',
-                    softWrap: true,
-                    textAlign: TextAlign.justify,
-                  )
+                  Text(info.id ?? '' ),
+                  Text(info.name ?? '' ),
+                  Text(info.username ?? ''),
+                  Text(info.email ?? '' )
                 ],
-              ),
             ),
           ],
         ),
