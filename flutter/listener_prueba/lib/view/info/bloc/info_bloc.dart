@@ -21,7 +21,7 @@ class InfoBloc extends Bloc<InfoEvent, InfoState> {
       emit(InfoLoading());
 
       try {
-        final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users/2'));
+        final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users/6'));
 
         if (response.statusCode == 200){
           final decode = jsonDecode(response.body);
